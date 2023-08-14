@@ -30,7 +30,21 @@ app.get('/', (req, res) => {
     <form action="/upload" method="post" enctype="multipart/form-data">
       <input type="file" name="image" accept="image/*" required>
       <button type="submit">Cargar Imagen</button>
+      <a href="/images">Ver imagenes</a>
     </form>
+  `);
+});
+
+app.get('/images', (req, res) => {
+  const imageFiles = fs.readdirSync('uploads/');
+  const images = imageFiles.map(filename => `/uploads/${filename}`);
+  
+  res.send(`
+    <h1>Imágenes Cargadas</h1>
+    <ul>
+      ${images.map(image => `<li><img src="${image}" alt="Imagen"></li>`).join('')}
+    </ul>
+    <a href="/">Volver</a>
   `);
 });
 
