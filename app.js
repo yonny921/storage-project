@@ -50,6 +50,9 @@ app.get('/images', (req, res) => {
   `);
 });
 
+// Servir imágenes estáticas desde el directorio 'uploads'
+app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
+
 app.listen(port, () => {
   console.log(`Aplicación funcionando en http://localhost:${port}`);
 });
