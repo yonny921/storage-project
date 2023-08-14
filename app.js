@@ -40,11 +40,12 @@ app.get('/images', (req, res) => {
   const imageFiles = fs.readdirSync('uploads/');
   const images = imageFiles.map(filename => `/uploads/${filename}`);
   
+  const imageElements = images.map(image => `<img src="${image}" alt="Imagen">`).join('<br>');
+  
   res.send(`
     <h1>Imágenes Cargadas</h1>
-    <ul>
-      ${images.map(image => `<li><img src="${image}" alt="Imagen"></li>`).join('')}
-    </ul>
+    ${imageElements}
+    <br>
     <a href="/">Volver</a>
   `);
 });
