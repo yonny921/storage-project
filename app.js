@@ -27,7 +27,7 @@ app.post('/upload', upload.single('image'), (req, res) => {
 
 app.get('/', (req, res) => {
   res.send(`
-    <h1>Aplicación de carga de imágenes</h1>
+    <h1>Aplicación de carga de imágenes de Yonny</h1>
     <form action="/upload" method="post" enctype="multipart/form-data">
       <input type="file" name="image" accept="image/*" required>
       <button type="submit">Cargar Imagen</button>
